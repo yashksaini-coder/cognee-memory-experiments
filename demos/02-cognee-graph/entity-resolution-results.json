@@ -510,5 +510,165 @@
    "wrong_total": 0
   },
   "note": "build3's after-asks ran on a graph left by a crashed merge and are excluded"
+ },
+ "retest_1_6_5": {
+  "date": "2026-10-25",
+  "cognee": "1.6.5",
+  "llm": "claude-haiku-4-5-20251001",
+  "threshold": 0.8,
+  "protected_types": [
+   "session",
+   "support session",
+   "customer",
+   "organization",
+   "date",
+   "email address",
+   "email",
+   "supportsession"
+  ],
+  "cycles": [
+   {
+    "cycle": 1,
+    "remember_s": 80.0,
+    "nodes": 340,
+    "edges": 911,
+    "phrasing_entities": 66,
+    "per_phrasing": [
+     11,
+     14,
+     11,
+     7,
+     11,
+     10,
+     9,
+     10
+    ],
+    "merge_plan": {
+     "clusters": 23,
+     "duplicates": 87,
+     "edges_to_repoint": 280
+    },
+    "apply_ok": false,
+    "recall_before_right_of_8": [
+     2,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4
+    ]
+   },
+   {
+    "cycle": 2,
+    "remember_s": 51.1,
+    "nodes": 311,
+    "edges": 864,
+    "phrasing_entities": 54,
+    "per_phrasing": [
+     15,
+     1,
+     10,
+     8,
+     11,
+     8,
+     8,
+     8
+    ],
+    "merge_plan": {
+     "clusters": 21,
+     "duplicates": 82,
+     "edges_to_repoint": 267
+    },
+    "apply_ok": false,
+    "recall_before_right_of_8": [
+     1,
+     2,
+     0,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ]
+   },
+   {
+    "cycle": 3,
+    "remember_s": 50.3,
+    "nodes": 324,
+    "edges": 856,
+    "phrasing_entities": 60,
+    "per_phrasing": [
+     14,
+     1,
+     11,
+     7,
+     13,
+     9,
+     10,
+     10
+    ],
+    "merge_plan": {
+     "clusters": 17,
+     "duplicates": 81,
+     "edges_to_repoint": 271
+    },
+    "apply_ok": false,
+    "recall_before_right_of_8": [
+     1,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ]
+   },
+   {
+    "cycle": 4,
+    "remember_s": 54.5,
+    "nodes": 312,
+    "edges": 918,
+    "phrasing_entities": 62,
+    "per_phrasing": [
+     11,
+     9,
+     9,
+     6,
+     13,
+     11,
+     9,
+     10
+    ],
+    "merge_plan": {
+     "clusters": 19,
+     "duplicates": 32,
+     "edges_to_repoint": 107
+    },
+    "apply_ok": false,
+    "recall_before_right_of_8": [
+     1,
+     2,
+     5,
+     5,
+     5,
+     7,
+     8,
+     7,
+     8,
+     7
+    ]
+   }
+  ],
+  "error": "ladybug csr_node_group.cpp:434 UNREACHABLE_CODE in add_edges (adapter.py:2138), from merge_entity_duplicates (consolidate_entities.py:519)",
+  "note": "no merge completed, so no after-merge recall; asks share one process and session memory is on by default in 1.6.5"
  }
 }

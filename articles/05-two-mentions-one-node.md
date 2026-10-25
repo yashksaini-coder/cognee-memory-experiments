@@ -89,13 +89,13 @@ Build 4 is the warning. The same protect list and the same 0.80 fused two differ
 
 ## Running the merge for real
 
-The docs also say to back up the graph and vector stores before running it for real. Take that literally. I applied the protected merge at 0.80 four times. Twice it worked: build 1 went from 377 nodes to 358, and "open payments issue" absorbed its duplicates to reach 7 of the 8 phrasings. Twice it stopped partway, while re-pointing edges, with an assertion inside the embedded graph store (`csr_node_group.cpp:434`), leaving the graph between states.
+The docs also say to back up the graph and vector stores before running it for real. Take that literally, and check the result afterwards: in some of my runs the merge stopped partway through re-pointing edges and left the graph between states. When it completed, build 1 went from 377 nodes to 358, and "open payments issue" absorbed its duplicates to reach 7 of the 8 phrasings.
 
 ## What merging did not change
 
 Merged nodes are a means. The end is an agent that can answer "which customers hit this bug?", so I asked Cognee's `recall()` exactly that and counted correct customer ids against the corpus truth. The PR note lists session ids but no customers, so the answer has to come from the sessions.
 
-Before consolidation, across 23 asks on three builds, recall named 1.9 of the 8 customers on average, and never a wrong one. After a successful merge on build 2 it named 4, 5 and 5 — three asks, on the one build where the merge both ran and was measured, so I am not counting it as a result. A listing question needs every session's customer in the retrieved context, and a tidier graph alone did not get it there in these runs. That is a retrieval question, and the next article in this series.
+Before consolidation, across 23 asks on three builds, recall named 1.9 of the 8 customers on average, and never a wrong one. After a completed merge on build 2 it named 4, 5 and 5 — three asks, on the one build where the merge both completed and was measured, so I am not counting it as a result. A listing question needs every session's customer in the retrieved context, and a tidier graph alone did not get it there in these runs. That is a retrieval question, and the next article in this series.
 
 ## What to do with this
 
@@ -107,6 +107,7 @@ Before consolidation, across 23 asks on three builds, recall named 1.9 of the 8 
 ## Limits
 
 - Synthetic sessions, 30 documents, one extraction model. Real support text is messier; a capable model may also do better or worse than Haiku at naming.
+- Measured on cognee 1.6.1. Four fresh builds on 1.6.5 (25 Oct 2026) showed the same pattern: the eight phrasings reached 54 to 66 entities and stayed apart.
 - The agent sentence is identical in every session by construction. A real agent's replies vary, which is the argument for making them not vary.
 - Recall was measured with one question and small samples, and the post-merge sample is too small to claim anything.
 - Embeddings are a 384-dimension local model; a larger embedding model would move the thresholds.
