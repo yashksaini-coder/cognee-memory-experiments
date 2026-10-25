@@ -71,15 +71,31 @@ What I want in the terminal after a publish is not "prior coverage exists". It i
 
 Cognee documents a mechanism for it. `GRAPH_COMPLETION` embeds the query once, then searches "concurrently across every vector index collection registered by the loaded DataPoint models — typically `Entity_name`, `EntityType_name`, `TextSummary_text`, `DocumentChunk_text` — plus the edge collection `EdgeType_relationship_name`", and expands 1 hop around those seeds ([Cognee's search docs](https://docs.cognee.ai/core-concepts/main-operations/legacy-operations/search)). The claim in that mechanism is that two differently-worded posts connect through a shared entity or relationship phrase instead of a shared word. It depends on the extraction having pulled the same entity out of both, and it can fail.
 
-Rows 4 and 5 of the demo's scoreboard would say whether it does. They have not been run here: there was no OpenAI-compatible key on this machine.
+Rows 4 and 5 of the demo's scoreboard test it. I ran them on 22 Oct 2026 with claude-haiku-4-5 for extraction and `nomic-embed-text` embeddings through a local Ollama:
+
+```text
+cognee as a vector store [search CHUNKS, onlyContext, no LLM]
+  0.816 fixtures/blogs/02-just-use-a-database.md
+  0.757 fixtures/blogs/m1-agent-writes-back-not-rag.md
+  0.738 fixtures/blogs/01-grep-as-agent-memory.md
+  0.702 fixtures/blogs/m7-benchmarks-vs-production.md
+  0.640 fixtures/blogs/m6-300-tokens-beat-113k.md
+
+cognee as a memory layer [recall, GRAPH_COMPLETION]
+  related: fixtures/blogs/post-just-use-a-database-is-half-right.md
+    - [grep as Agent Memory: What It Costs at 100,000 Sessions](https://dev.to/example/grep-as-agent-memory)
+    - [The moment your agent writes back, it isn't RAG anymore](https://dev.to/example/agent-writes-back-not-rag)
+```
+
+Row 4 is the answer word overlap could not give: a ranking with a clear top, and the top is right. The post being published is the short version of `02-just-use-a-database.md`, and Cognee's vector search put it first. Row 5 is more selective: two links, both real URLs from `published.json`, each with a stated reason. But it left out 02, the post row 4 ranked first, and a second run from an empty store gave the same two links. On this archive the closest post came from the vector lookup; the graph added a short list with reasons.
 
 ## Where it drops in
 
-The integration is one method, `CogneeMemory.relate` in `src/memory.ts`: `recall()` first, then `remember()`, in that order, so a post can never be its own top hit (`src/memory.ts:76`, recall at `:99`, remember at `:116`).
+The integration is one method, `CogneeMemory.relate` in `src/memory.ts`: `recall()` first, then `remember()`, in that order, so a post can never be its own top hit (`src/memory.ts:98`, recall at `:125`, remember at `:142`).
 
 The seam is the last statement of `main()`'s per-file success path in dev-publish, downstream of `saveState`. That placement is the whole safety argument. It is the only point where the published URL, the article ID, the final body and the verb all exist and are known-good. It is after the state write, so a memory failure cannot corrupt `data/published.json`. The call site swallows its own error and logs instead of pushing to `failures`, so a memory outage does not turn a green publish red. The `skip` branch returns early, so unchanged posts are never re-ingested: the existing `contentHash` drives ingestion for free. The dev-publish side of the change is vendored as `seam.patch` against `8b42526` and is not applied to anything.
 
-One thing the recall is not: dataset-scoped. In `@cognee/cognee-ts` 0.2.0 the `datasets` filter on `recall()` is unusable, because it needs a `user_id` that the recall options type has no field for, and the call is rejected before any network call. So the call is `sdk.recall(query, { topK: 5 })`, unfiltered, and the only reason that is safe here is that `remember()` is the only writer and only ever writes one dataset.
+One thing the recall is not: dataset-scoped. In `@cognee/cognee-ts` 0.2.0 the `datasets` filter on `recall()` is unusable, because it needs a `user_id` that the recall options type has no field for, and the call is rejected before any network call. So the call is `sdk.recall(query, { topK: 5 })`, unfiltered, which is safe only because `remember()` is the only writer. Each post also goes into its own dataset: in 0.2.0 a dataset ingests once, and a second `remember()` into it returns success in about 2 ms having stored nothing. The first keyed run seeded five posts into one dataset and kept one.
 
 ## What it cost, and what it does not pay back
 
@@ -89,7 +105,7 @@ Against that, Cognee's own published break-even for graph ingestion is "roughly 
 
 ## What I did not measure
 
-- **The Cognee rows never ran.** No key, so the demo printed `cognee rows: skipped (set COGNEE_LLM_API_KEY to run them)`. Nothing here claims anything about what `recall()` returned, what it ranked first, or how long it took.
+- **The keyed run is one model on 5 posts.** claude-haiku-4-5 with `nomic-embed-text`, run twice from an empty store with identical results. A different model or a bigger archive could rank differently.
 - **The archive is 5 posts.** Overlap counts on 5 documents by one author are not a result about archives in general. They are a result about this one, and it is the archive the feature would actually run against.
 - **The dev.to URLs are placeholders** on `dev.to/example/...`, because nothing in this repo is published yet. The sha256 digests in `fixtures/published.json` are real digests of the fixture files, so row 1 is a real computation.
 - **The score is printed and never used to decide.** `CogneeRecallItem.score` is a required number whose scale and direction are undocumented, so any threshold would be invented.
@@ -102,7 +118,7 @@ The demo is in [yashksaini-coder/cognee-memory-experiments](https://github.com/y
 ```bash
 cd demos/03-dev-publish-cognee
 npm install                               # dev deps + cognee: 372 MB, almost all addon
-npm test                                  # 5 assertions, no key, no network
+npm test                                  # 21 assertions, no key, no network
 npm run demo                              # rows 1-3 offline
-COGNEE_LLM_API_KEY=sk-... npm run demo    # rows 4 and 5, which I could not run
+cp .env.example .env && npm run demo      # rows 4 and 5: OpenAI, Anthropic or local Ollama
 ```
