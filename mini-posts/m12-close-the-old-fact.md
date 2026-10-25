@@ -27,4 +27,4 @@ Test memory by changing one fact and asking again.
 ## Source
 
 - [Temporal Knowledge Graph](https://www.cognee.ai/temporal-knowledge-graph), Cognee, 19 Oct 2026
-- Measured: [experiments/grep_memory](../experiments/grep_memory/results.json) and [experiments/db_memory](../experiments/db_memory/results.json) in this repo
+- Measured: [experiments/grep_memory](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/experiments/grep_memory/results.json) and [experiments/db_memory](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/experiments/db_memory/results.json) in this repo

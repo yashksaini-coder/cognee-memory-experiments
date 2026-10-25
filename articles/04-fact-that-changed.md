@@ -83,7 +83,7 @@ A useful test on your own data costs very little: take twenty facts your agent w
 
 ## Run it yourself
 
-The two measured rows are in [yashksaini-coder/cognee-agent-memory-experiments](https://github.com/yashksaini-coder/cognee-agent-memory-experiments):
+The two measured rows are in [yashksaini-coder/cognee-memory-experiments](https://github.com/yashksaini-coder/cognee-memory-experiments):
 
 ```bash
 python3 experiments/grep_memory/make_corpus.py corpus/10000 10000 # the sessions, seeded

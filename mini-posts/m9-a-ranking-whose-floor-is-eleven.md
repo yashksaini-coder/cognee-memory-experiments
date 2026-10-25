@@ -24,6 +24,6 @@ Same method elsewhere: 4 of 8 phrasings share no word.
 
 ## Source
 
-- `demos/03-dev-publish-cognee`, `npm run demo` in [yashksaini-coder/cognee-agent-memory-experiments](https://github.com/yashksaini-coder/cognee-agent-memory-experiments), re-run 19 Oct 2026: `word overlap  5/5`, per-post 56 / 83 / 28 / 14 / 11, `(0/5 prior posts share no content word with this one)`. Runs offline, no API key.
+- `demos/03-dev-publish-cognee`, `npm run demo` in [yashksaini-coder/cognee-memory-experiments](https://github.com/yashksaini-coder/cognee-memory-experiments), re-run 19 Oct 2026: `word overlap  5/5`, per-post 56 / 83 / 28 / 14 / 11, `(0/5 prior posts share no content word with this one)`. Runs offline, no API key.
 - `experiments/db_memory/results.json`, `complaint_vs_fix`, for the 4 of 8 figure. The demo's tokenizer is ported from `experiments/db_memory/db_demo.py`, so the two counts are comparable in method.
 - The demo's Cognee rows are skipped without a key. No Cognee run is reported here.

@@ -50,7 +50,7 @@ npm test        # 5 assertions, no key, no network
 npm run demo    # the three rows above
 ```
 
-Repo: [yashksaini-coder/cognee-agent-memory-experiments](https://github.com/yashksaini-coder/cognee-agent-memory-experiments). The full write-up, with the integration and what it costs: [A content hash knows the file changed](../articles/03-hash-knows-the-file-changed.md).
+Repo: [yashksaini-coder/cognee-memory-experiments](https://github.com/yashksaini-coder/cognee-memory-experiments). The full write-up, with the integration and what it costs: [A content hash knows the file changed](../articles/03-hash-knows-the-file-changed.md).
 
 ## X thread
 

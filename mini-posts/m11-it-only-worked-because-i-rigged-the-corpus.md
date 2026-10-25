@@ -29,5 +29,5 @@ It worked because the PR note I generated lists the affected session IDs. A real
 
 - `experiments/grep_memory/results.json`, `sessions: 100000`, `multi_hop`: 4 rounds, 2 full corpus scans, 897.5 ms, 442 of 442 customers, 8,701 estimated tokens (4 characters per token). The 1,000- and 10,000-session records carry the same 4 rounds and 2 scans.
 - The PR note is synthetic and lists the affected session IDs: `experiments/grep_memory/make_corpus.py`.
-- [When grep Works as Agent Memory, and When It Fails](../articles/01-grep-as-agent-memory.md), "Multi-hop questions multiply the scans" and Limits.
+- [When grep Works as Agent Memory, and When It Fails](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/articles/01-grep-as-agent-memory.md), "Multi-hop questions multiply the scans" and Limits.
 - [Code graph pipeline](https://docs.cognee.ai/guides/code-graph), Cognee docs.

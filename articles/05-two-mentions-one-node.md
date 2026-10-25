@@ -26,7 +26,7 @@ Cognee's own docs describe what happens when that doesn't occur: when one real-w
 
 ## The setup
 
-The corpus is the one from the [grep](01-grep-as-agent-memory.md) and [database](02-just-use-a-database.md) articles: synthetic support sessions, generated with a fixed seed. In it, 0.5% of sessions report the same billing-sync bug in one of eight phrasings:
+The corpus is the one from the [grep](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/articles/01-grep-as-agent-memory.md) and [database](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/articles/02-just-use-a-database.md) articles: synthetic support sessions, generated with a fixed seed. In it, 0.5% of sessions report the same billing-sync bug in one of eight phrasings:
 
 ```text
 "my invoice looked wrong this month, two line items are missing"

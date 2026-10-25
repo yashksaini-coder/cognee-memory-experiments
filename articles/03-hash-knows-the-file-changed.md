@@ -59,7 +59,7 @@ Row 2 is 5 of 5 on the tags `[ai agents database graph]`. Row 3 is 5 of 5 on con
 
 ## The same failure, upside down
 
-The support corpus in [the database article](02-just-use-a-database.md) failed the other way. Customers described one billing bug in 8 phrasings. Four of the 8 share no content word with PR #4812, which fixed it. One shares only "invoice", a word that appears in 80.5% of all sessions and therefore connects to almost everything. Word matching missed.
+The support corpus in [the database article](https://github.com/yashksaini-coder/cognee-memory-experiments/blob/main/articles/02-just-use-a-database.md) failed the other way. Customers described one billing bug in 8 phrasings. Four of the 8 share no content word with PR #4812, which fixed it. One shares only "invoice", a word that appears in 80.5% of all sessions and therefore connects to almost everything. Word matching missed.
 
 Here, on one author's archive, word matching misses nothing. Every prior post shares a tag, and every prior post shares between 11 and 83 content words with the new one. Row 3's printed line says it directly: 0 of 5 prior posts share no content word with this one.
 
@@ -97,7 +97,7 @@ Against that, Cognee's own published break-even for graph ingestion is "roughly 
 
 ## Run it yourself
 
-The demo is in [yashksaini-coder/cognee-agent-memory-experiments](https://github.com/yashksaini-coder/cognee-agent-memory-experiments):
+The demo is in [yashksaini-coder/cognee-memory-experiments](https://github.com/yashksaini-coder/cognee-memory-experiments):
 
 ```bash
 cd demos/03-dev-publish-cognee
