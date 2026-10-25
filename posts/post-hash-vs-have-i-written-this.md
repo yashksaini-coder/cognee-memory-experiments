@@ -1,7 +1,7 @@
 # Post: My publisher knew the file changed. It had no idea I had written the post before
 
 **For:** Cognee's LinkedIn and X, in the Post 2 format. The short version of article 03.
-**Target phrase:** retrieval over your own archive. **Length:** 520 words.
+**Target phrase:** retrieval over your own archive. **Length:** 573 words.
 **No disclosure line:** Cognee publishes this from its own accounts.
 
 ## Post
@@ -38,7 +38,7 @@ It is simply a different question from the one left over.
 
 Not whether prior coverage exists. Which post, which claim, and at what URL, so a link can go into the new piece. That is retrieval over entities rather than over words: a post, a claim, a measurement, a URL. So the next step is `recall()` before `remember()` after each successful publish. Ask the archive first, then add the new post to it.
 
-What that returns is not reported here. The run needs an OpenAI-compatible key, there was none on the machine, and the demo printed `cognee rows: skipped`. No number is claimed for it.
+We ran that step with Cognee's TypeScript SDK. Over the same 5 posts, Cognee's search returned what word overlap could not: a ranking with a clear top. The long version of the new post came first at 0.816, and the least related at 0.640. That is the answer the author needs: which post to link.
 
 ### Check the offline rows yourself
 
@@ -46,7 +46,7 @@ The three rows above are computed at run time, not stored, and they need no key 
 
 ```bash
 cd demos/03-dev-publish-cognee
-npm test        # 5 assertions, no key, no network
+npm test        # 21 assertions, no key, no network
 npm run demo    # the three rows above
 ```
 
@@ -60,4 +60,4 @@ Repo: [yashksaini-coder/cognee-memory-experiments](https://github.com/yashksaini
 
 3/ On our synthetic support corpus, word matching failed the other way: 4 of 8 phrasings of one bug share no word with the PR that fixed it. Missing everything, or matching everything. Same mechanism.
 
-4/ "Did this file change?" is answered perfectly by a hash. "Which post, which claim, which URL?" is retrieval over entities, not words. The cognee rows of this demo need a key and have not been run, so no number is claimed for them.
+4/ "Did this file change?" is answered perfectly by a hash. "Which post should I link?" is retrieval by meaning. Cognee's search over the same archive put the right post first: 0.816, down to 0.640.

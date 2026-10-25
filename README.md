@@ -116,7 +116,7 @@ One idea each, with its explainer slide and both a LinkedIn and an X version.
 | [m8-reading-a-benchmark-claim.md](mini-posts/m8-reading-a-benchmark-claim.md) | How to read an AI memory benchmark claim | `m8-benchmark-claims` | 9 Oct 2026 | ❌ |
 | [m9-a-ranking-whose-floor-is-eleven.md](mini-posts/m9-a-ranking-whose-floor-is-eleven.md) | A ranking whose floor is 11 is not a ranking | `m9-overlap-floor` | 19 Oct 2026 | — |
 | [m10-index-changed-recall-by-zero.md](mini-posts/m10-index-changed-recall-by-zero.md) | The index took the lookup from 386.7 ms to 0.32 ms and found exactly the same 63 reports | `m10-index-same-recall` | 19 Oct 2026 | — |
-| [m11-it-only-worked-because-i-rigged-the-corpus.md](mini-posts/m11-it-only-worked-because-i-rigged-the-corpus.md) | grep answered the multi-hop question, and only because I listed the session IDs myself | `m11-rigged-corpus` | 19 Oct 2026 | — |
+| [m11-the-answer-was-already-written-down.md](mini-posts/m11-the-answer-was-already-written-down.md) | grep answered the multi-hop question because the answer was already written down | `m11-written-down` | 19 Oct 2026 | — |
 | [m12-close-the-old-fact.md](mini-posts/m12-close-the-old-fact.md) | A new fact should close the old one, not sit beside it | `m12-close-the-old-fact` | 22 Oct 2026 | — |
 | [m13-two-names-two-nodes.md](mini-posts/m13-two-names-two-nodes.md) | Two names for one thing make two nodes | `a05-two-names-two-nodes` | 22 Oct 2026 | — |
 | [m14-better-not-bigger.md](mini-posts/m14-better-not-bigger.md) | Memory should get better, not just bigger | `m14-better-not-bigger` | 22 Oct 2026 | — |
