@@ -389,7 +389,7 @@ def pub_hash_vs_topic():
                       "Every prior post shares words too. The counts below are the ranking it gives me.")
             + strip + "</div>")
     return page("A content hash matches 0 of 5. Word overlap matches 5 of 5.",
-                "What my dev.to publisher could already retrieve about my own archive, before any memory layer",
+                "What a dev.to publisher could already retrieve about its own archive, before any memory layer",
                 f"<div style='width:100%;display:flex'>{card}</div>",
                 f"{PUB_FOOT}, offline. Support corpus, for contrast: {no_word} of {len(phr)} phrasings "
                 f"share no word with the PR that fixed the bug.")
@@ -418,7 +418,7 @@ def m9_overlap_floor():
     card = (f"<div class='card grow col' style='gap:14px'>"
             f"<div class='p'>shared content words with the post being published</div>{svg}</div>")
     return page(f"A ranking whose floor is {PUB_RANKED[-1][1]} is not a ranking",
-                f"Content words each of my {PUB['posts']} prior posts shares with the one I am about to publish",
+                f"Content words each of the {PUB['posts']} earlier posts shares with the new one",
                 f"<div style='width:100%;display:flex'>{card}</div>", PUB_FOOT + ".")
 
 
@@ -476,7 +476,7 @@ def m11_rigged_corpus():
                  f"<div class='mono' style='flex:1;font-size:{31 if lead else 29}px;color:{WHITE};"
                  f"font-weight:{700 if lead else 400}'>{cmd}</div>{right}</div>")
     card = f"<div class='card grow col' style='gap:0;padding:10px 34px'>{body}</div>"
-    return page("grep answered the multi-hop question, and only because I listed the session IDs",
+    return page("grep answered the multi-hop question because the answer was already written down",
                 "Which customers did the bug fixed in PR #4812 affect? Four rounds, two of them full scans.",
                 f"<div style='width:100%;display:flex'>{card}</div>",
                 f"{GREP100['sessions']:,} sessions, {GREP100['corpus_mb']} MB. {h['rounds']} rounds, "
@@ -601,7 +601,7 @@ FIGURES = {
     "db-key-vs-question": db_key_vs_question, "db-word-overlap": db_overlap, "db-five-jobs": five_jobs,
     "m1-rag-vs-memory": m1, "m6-context-rot": m6, "m7-doordash": m7,
     "pub-hash-vs-topic": pub_hash_vs_topic, "m9-overlap-floor": m9_overlap_floor,
-    "m10-index-same-recall": m10_index_same_recall, "m11-rigged-corpus": m11_rigged_corpus,
+    "m10-index-same-recall": m10_index_same_recall, "m11-written-down": m11_rigged_corpus,
     "fact-that-changed": fact_that_changed,
     "a05-two-names-two-nodes": a05_two_names_two_nodes,
     "m12-close-the-old-fact": m12_close_the_old_fact, "m14-better-not-bigger": m14_better_not_bigger,
